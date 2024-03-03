@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -34,6 +35,29 @@ public class Login extends AppCompatActivity {
         final ImageButton loginBtn = findViewById( R.id.loginBtn);
         final ImageButton registerNowBtn = findViewById( R.id.registernowBtn);
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.button_anim);
+
+        final ImageButton showPassButton = findViewById(R.id.showpass);
+
+        showPassButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Toggle password visibility
+                int inputType = password.getInputType();
+                if ((inputType & InputType.TYPE_TEXT_VARIATION_PASSWORD) > 0) {
+                    // Password is currently hidden, show it
+                    password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                    showPassButton.setImageResource(R.drawable.key_off);
+                } else {
+                    // Password is currently visible, hide it
+                    password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                    showPassButton.setImageResource(R.drawable.key);
+                }
+
+                // Move cursor to the end of the text
+                password.setSelection(password.getText().length());
+            }
+        });
+
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -4,7 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -34,10 +37,31 @@ public class Register extends AppCompatActivity {
 
         final ImageButton registerBtn = findViewById(R.id.registerBtn);
         final ImageButton loginNowBtn = findViewById(R.id.loginNow);
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.button_anim);
+
+
+        final ImageButton showPassButton = findViewById(R.id.showpass);
+        final ImageButton showPassButton2 = findViewById(R.id.showpass2);
+
+        showPassButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                togglePasswordVisibility(Password, showPassButton);
+            }
+        });
+
+        showPassButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                togglePasswordVisibility(Conpassword, showPassButton2);
+            }
+        });
+
 
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                registerBtn.startAnimation(animation);
                 final String fullnameTxt = Fullname.getText().toString();
                 final String emailTxt = Email.getText().toString();
                 final String phoneTxt = Phone.getText().toString();
@@ -78,11 +102,23 @@ public class Register extends AppCompatActivity {
         loginNowBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                loginNowBtn.startAnimation(animation);
                 finish();
             }
         });
 
 
 
-    }
-}
+    }  private void togglePasswordVisibility(EditText editText, ImageButton showPassButton) {
+        // Toggle password visibility
+        int inputType = editText.getInputType();
+        if ((inputType & InputType.TYPE_TEXT_VARIATION_PASSWORD) > 0) {
+            // Password is currently hidden, show it
+            editText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+            showPassButton.setImageResource(R.drawable.key_off);
+        } else {
+            // Password is currently visible, hide it
+            editText.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            showPassButton.setImageResource(R.drawable.key);
+        } editText.setSelection(editText.getText().length());
+}}
