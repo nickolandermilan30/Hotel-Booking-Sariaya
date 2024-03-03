@@ -1,72 +1,229 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
-    tools:context=".Login">
+    android:background="@drawable/wall">
+
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.6"
+        android:background="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="50dp" />
+
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:background="@drawable/star"
+        app:layout_constraintBottom_toTopOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.569"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.195" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="412dp"
+        android:layout_height="517dp"
+        android:background="@drawable/nav1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.378"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/plane"
+        app:layout_constraintBottom_toTopOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.276" />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
+        android:layout_width="347dp"
+        android:layout_height="51dp"
+        android:fontFamily="@font/alata"
         android:gravity="center"
-        android:textColor="#CC000000"
-        android:fontFamily="sans-serif"
-        android:textSize="18sp"
-        android:text="Login Here"
+        android:text="High Fly Book"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view3" />
 
-        />
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="347dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="20dp"
+        android:fontFamily="@font/berkshire_swash"
+        android:gravity="center"
+        android:text="Wellcome"
+        android:textAlignment="textStart"
+        android:textColor="@color/dark_green"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view"
+        app:layout_constraintVertical_bias="0.06" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="230dp"
+        android:layout_height="46dp"
+        android:fontFamily="@font/alata"
+        android:gravity="center"
+        android:text="Takes You Everywhere. "
+        android:textAlignment="textStart"
+        android:textColor="@color/dark_green"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.232"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.085" />
+
+    <View
+        android:id="@+id/view5"
+        android:layout_width="304dp"
+        android:layout_height="54dp"
+        android:background="@drawable/nav2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view"
+        app:layout_constraintVertical_bias="0.353" />
 
     <EditText
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="phone"
         android:id="@+id/phone"
+        android:layout_width="268dp"
+        android:layout_height="42dp"
+        android:background="@null"
+        android:fontFamily="@font/alata"
         android:hint="Mobile"
-        android:maxLines="1"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:paddingStart="20dp"
-        android:paddingEnd="0dp"
-        />
+        android:inputType="phone"
+        app:layout_constraintBottom_toBottomOf="@+id/view5"
+        app:layout_constraintEnd_toEndOf="@+id/view5"
+        app:layout_constraintStart_toStartOf="@+id/view5"
+        app:layout_constraintTop_toTopOf="@+id/view5" />
+
+    <View
+        android:id="@+id/view6"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/users"
+        app:layout_constraintBottom_toTopOf="@+id/view5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.888"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view"
+        app:layout_constraintVertical_bias="0.278" />
+
+    <View
+        android:id="@+id/view7"
+        android:layout_width="304dp"
+        android:layout_height="54dp"
+        android:background="@drawable/nav2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintVertical_bias="0.377" />
+
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
         android:id="@+id/password"
+        android:layout_width="268dp"
+        android:layout_height="42dp"
+        android:background="@null"
+        android:fontFamily="@font/alata"
         android:hint="Password"
-        android:maxLines="1"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:paddingStart="20dp"
-        android:paddingEnd="0dp"
-        />
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="@+id/view7"
+        app:layout_constraintEnd_toEndOf="@+id/view7"
+        app:layout_constraintStart_toStartOf="@+id/view7"
+        app:layout_constraintTop_toTopOf="@+id/view7" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <ImageButton
         android:id="@+id/loginBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:text="Login"
-        android:layout_marginTop="40dp"
-        />
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/button1"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.653"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view7"
+        app:layout_constraintVertical_bias="0.175" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Don't Have an Account"/>
+    <ImageButton
+        android:id="@+id/registernowBtn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/button2"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.357"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view7"
+        app:layout_constraintVertical_bias="0.175" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Register Now"
-            android:layout_marginStart="5dp"
-            android:id="@+id/registernowBtn"
-            />
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="65dp"
+        android:layout_height="29dp"
+        android:fontFamily="@font/alata"
+        android:gravity="center"
+        android:text="Log in"
+        android:textColor="@color/dark_green"
+        android:textSize="12dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.655"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginBtn"
+        app:layout_constraintVertical_bias="0.0" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="65dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/alata"
+        android:gravity="center"
+        android:text="Register"
+        android:textColor="@color/dark_green"
+        android:textSize="12dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/view2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.329"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registernowBtn"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

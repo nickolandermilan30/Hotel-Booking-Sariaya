@@ -6,8 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,13 +31,14 @@ public class Login extends AppCompatActivity {
 
         final EditText phone = findViewById( R.id.phone);
         final EditText password = findViewById( R.id.password);
-        final Button loginBtn = findViewById( R.id.loginBtn);
-        final TextView registerNowBtn = findViewById( R.id.registernowBtn);
+        final ImageButton loginBtn = findViewById( R.id.loginBtn);
+        final ImageButton registerNowBtn = findViewById( R.id.registernowBtn);
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.button_anim);
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                loginBtn.startAnimation(animation);
                 final String phoneTxt = phone.getText().toString();
                 final String passwordTxt = password.getText().toString();
 
@@ -79,7 +83,7 @@ public class Login extends AppCompatActivity {
         registerNowBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                registerNowBtn.startAnimation(animation);
 
                 startActivity(new Intent(Login.this, Register.class));
             }
