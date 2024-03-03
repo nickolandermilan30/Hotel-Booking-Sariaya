@@ -3,8 +3,10 @@ package com.example.log_in_sign_up;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.InputType;
 import android.view.View;
 import android.view.animation.Animation;
@@ -66,43 +68,53 @@ public class Login extends AppCompatActivity {
                 final String phoneTxt = phone.getText().toString();
                 final String passwordTxt = password.getText().toString();
 
-                if(phoneTxt.isEmpty() || passwordTxt.isEmpty()){
+                if (phoneTxt.isEmpty() || passwordTxt.isEmpty()) {
                     Toast.makeText(Login.this, "Please enter your mobile or password", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    databaseReference.child("user").addListenerForSingleValueEvent(new ValueEventListener() {
+                } else {
+                    showLoadingProgressDialog();
+                    new Handler().postDelayed(new Runnable() {
                         @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if(snapshot.hasChild(phoneTxt)){
-                                DataSnapshot userSnapshot = snapshot.child(phoneTxt);
-                                if (userSnapshot.hasChild("Password")) {
-                                    final String getPassword = userSnapshot.child("Password").getValue(String.class);
-                                    if (getPassword != null && getPassword.equals(passwordTxt)){
-                                        // Successfully logged in
-                                        Toast.makeText(Login.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(Login.this, MainActivity.class));
-                                        finish();
+                        public void run() {
 
+                            databaseReference.child("user").addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    dismissLoadingProgressDialog(); // Dismiss loading dialog when data retrieval is complete
+
+                                    if (snapshot.hasChild(phoneTxt)) {
+                                        DataSnapshot userSnapshot = snapshot.child(phoneTxt);
+                                        if (userSnapshot.hasChild("Password")) {
+                                            final String getPassword = userSnapshot.child("Password").getValue(String.class);
+                                            if (getPassword != null && getPassword.equals(passwordTxt)) {
+                                                // Successfully logged in
+                                                Toast.makeText(Login.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
+                                                startActivity(new Intent(Login.this, MainActivity.class));
+                                                finish();
+                                            } else {
+                                                // Wrong Password
+                                                Toast.makeText(Login.this, "Wrong Password", Toast.LENGTH_SHORT).show();
+                                            }
+                                        } else {
+                                            // "Password" child not found
+                                            Toast.makeText(Login.this, "Password not found for the user", Toast.LENGTH_SHORT).show();
+                                        }
                                     } else {
-                                        // Wrong Password
-                                        Toast.makeText(Login.this, "Wrong Password", Toast.LENGTH_SHORT).show();
+                                        // User not found
+                                        Toast.makeText(Login.this, "User not found", Toast.LENGTH_SHORT).show();
                                     }
-                                } else {
-                                    // "Password" child not found
-                                    Toast.makeText(Login.this, "Password not found for the user", Toast.LENGTH_SHORT).show();
                                 }
-                            } else {
-                                // User not found
-                                Toast.makeText(Login.this, "User not found", Toast.LENGTH_SHORT).show();
-                            }}
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
 
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+                                    dismissLoadingProgressDialog(); // Dismiss loading dialog on onCancelled
+                                }
+                            });
                         }
-                    });
+                    }, 1000); // Delay for 1000 milliseconds (1 second), you can adjust this time as needed
                 }
             }
         });
+
 
         registerNowBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,5 +124,18 @@ public class Login extends AppCompatActivity {
                 startActivity(new Intent(Login.this, Register.class));
             }
         });
+    }
+    private ProgressDialog progressDialog;
+    private void showLoadingProgressDialog() {
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Logging in...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+    }
+
+    private void dismissLoadingProgressDialog() {
+        if (progressDialog != null && progressDialog.isShowing()) {
+            progressDialog.dismiss();
+        }
     }
 }
