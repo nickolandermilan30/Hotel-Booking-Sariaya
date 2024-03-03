@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,8 +32,8 @@ public class Register extends AppCompatActivity {
         final EditText Password = findViewById(R.id.password);
         final EditText Conpassword = findViewById(R.id.conpassword);
 
-        final Button registerBtn = findViewById(R.id.registerBtn);
-        final TextView loginNowBtn = findViewById(R.id.loginNow);
+        final ImageButton registerBtn = findViewById(R.id.registerBtn);
+        final ImageButton loginNowBtn = findViewById(R.id.loginNow);
 
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
