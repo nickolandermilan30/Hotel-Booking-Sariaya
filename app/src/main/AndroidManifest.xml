@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -14,12 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Log_in_Sign_up"
         tools:targetApi="31">
-        <activity
-            android:name=".CropImageActivity"
-            android:exported="false" />
-        <activity
-            android:name=".CropActivity"
-            android:exported="false" />
+
         <activity android:name=".Register" />
         <activity android:name=".MainActivity" />
         <activity
