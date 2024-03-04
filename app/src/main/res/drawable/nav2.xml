@@ -11,7 +11,7 @@
                 android:topLeftRadius="30dp" />
             <stroke
                 android:width="2dp"
-                android:color="@color/dark_green"
+                android:color="@color/red"
                 />
 
             <!-- Change stroke color here -->

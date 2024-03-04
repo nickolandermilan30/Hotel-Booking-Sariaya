@@ -10,6 +10,16 @@
     tools:context=".Register">
 
     <View
+        android:id="@+id/view8"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.6"
+        android:background="@color/red"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="50dp" />
+
+    <View
         android:id="@+id/view"
         android:layout_width="414dp"
         android:layout_height="643dp"
@@ -25,8 +35,7 @@
         android:id="@+id/view3"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:background="@drawable/plane2"
-        android:rotation="50"
+        android:background="@drawable/logobg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.071"
@@ -39,8 +48,8 @@
         android:layout_height="56dp"
         android:fontFamily="@font/alata"
         android:gravity="center"
-        android:text="High Fly Book"
-        android:textColor="@color/dark_green"
+        android:text="Hotel Book"
+        android:textColor="@color/red"
         android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/view1"
@@ -206,7 +215,7 @@
         android:fontFamily="@font/alata"
         android:gravity="center"
         android:text="Confirm"
-        android:textColor="@color/dark_green"
+        android:textColor="@color/red"
         android:textSize="12dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -223,7 +232,7 @@
         android:fontFamily="@font/alata"
         android:gravity="center"
         android:text="Log In Now"
-        android:textColor="@color/dark_green"
+        android:textColor="@color/red"
         android:textSize="12dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
