@@ -79,7 +79,7 @@ public class Login extends AppCompatActivity {
                             databaseReference.child("user").addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                    dismissLoadingProgressDialog(); // Dismiss loading dialog when data retrieval is complete
+                                    dismissLoadingProgressDialog();
 
                                     if (snapshot.hasChild(phoneTxt)) {
                                         DataSnapshot userSnapshot = snapshot.child(phoneTxt);
@@ -88,7 +88,11 @@ public class Login extends AppCompatActivity {
                                             if (getPassword != null && getPassword.equals(passwordTxt)) {
                                                 // Successfully logged in
                                                 Toast.makeText(Login.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
-                                                startActivity(new Intent(Login.this, MainActivity.class));
+                                                Intent intent = new Intent(Login.this, MainActivity.class);
+                                                intent.putExtra("FullName", userSnapshot.child("Fullname").getValue(String.class));
+                                                intent.putExtra("PhoneNumber", phoneTxt);
+                                                startActivity(intent);
+
                                                 finish();
                                             } else {
                                                 // Wrong Password
@@ -110,7 +114,7 @@ public class Login extends AppCompatActivity {
                                 }
                             });
                         }
-                    }, 1000); // Delay for 1000 milliseconds (1 second), you can adjust this time as needed
+                    }, 1000);
                 }
             }
         });

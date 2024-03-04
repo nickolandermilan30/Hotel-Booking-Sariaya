@@ -2,6 +2,8 @@ package com.example.log_in_sign_up;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -83,6 +85,13 @@ public class Register extends AppCompatActivity {
                                 databaseReference.child("user").child(phoneTxt).child("Password").setValue(passwordTxt);
 
                                 Toast.makeText(Register.this, "User Registered Successfully", Toast.LENGTH_SHORT).show();
+
+
+                                Intent intent = new Intent(Register.this, MainActivity.class);
+                                intent.putExtra("FullName", fullnameTxt);
+                                intent.putExtra("PhoneNumber", phoneTxt);
+                                startActivity(intent);
+
                                 finish();
                             }
                         }
