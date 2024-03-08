@@ -8,6 +8,21 @@
     android:background="@color/white_brown"
     tools:context=".MainActivity">
 
+
+
+    <View
+        android:id="@+id/gradientView"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginTop="144dp"
+        android:background="@drawable/gradient_bg"
+        app:layout_constraintBottom_toTopOf="@+id/view5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
     <ImageButton
         android:id="@+id/logout"
         android:layout_width="47dp"
@@ -220,5 +235,42 @@
         app:layout_constraintStart_toStartOf="@+id/b4"
         app:layout_constraintTop_toBottomOf="@+id/b4"
         app:layout_constraintVertical_bias="0.0" />
+
+    <View
+        android:id="@+id/view56"
+        android:layout_width="332dp"
+        android:layout_height="53dp"
+        android:background="@drawable/nav4"
+        app:layout_constraintBottom_toTopOf="@+id/view5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2" />
+
+    <EditText
+        android:id="@+id/phone"
+        android:layout_width="300dp"
+        android:layout_height="42dp"
+        android:background="@null"
+        android:fontFamily="@font/kumbh_sans_light"
+        android:hint="Search"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/view56"
+        app:layout_constraintEnd_toEndOf="@+id/view56"
+        app:layout_constraintStart_toStartOf="@+id/view56"
+        app:layout_constraintTop_toTopOf="@+id/view56" />
+
+    <View
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="7dp"
+        android:background="@drawable/search"
+        app:layout_constraintBottom_toBottomOf="@+id/view56"
+        app:layout_constraintEnd_toEndOf="@+id/view56"
+        app:layout_constraintHorizontal_bias="0.973"
+        app:layout_constraintStart_toStartOf="@+id/view56"
+        app:layout_constraintTop_toTopOf="@+id/view56"
+        app:layout_constraintVertical_bias="0.782" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
