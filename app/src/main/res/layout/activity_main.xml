@@ -8,7 +8,64 @@
     android:background="@color/white_brown"
     tools:context=".MainActivity">
 
+    <View
+        android:id="@+id/view10"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/location"
+        android:elevation="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view9"
+        app:layout_constraintEnd_toEndOf="@+id/view9"
+        app:layout_constraintHorizontal_bias="0.069"
+        app:layout_constraintStart_toStartOf="@+id/view9"
+        app:layout_constraintTop_toTopOf="@+id/view9"
+        app:layout_constraintVertical_bias="0.0" />
 
+    <View
+        android:id="@+id/view9"
+        android:layout_width="144dp"
+        android:layout_height="33dp"
+        android:background="@drawable/nav5"
+        android:elevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.505" />
+
+    <TextView
+        android:layout_width="134dp"
+        android:layout_height="22dp"
+        android:elevation="30dp"
+        android:fontFamily="@font/kumbh_sans_light"
+        android:gravity="center"
+        android:text="Quezon Province"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/view9"
+        app:layout_constraintEnd_toEndOf="@+id/view9"
+        app:layout_constraintHorizontal_bias="0.888"
+        app:layout_constraintStart_toEndOf="@+id/view10"
+        app:layout_constraintTop_toTopOf="@+id/view9"
+        app:layout_constraintVertical_bias="0.363" />
+
+    <TextView
+        android:layout_width="257dp"
+        android:layout_height="70dp"
+        android:elevation="10dp"
+        android:fontFamily="@font/kumbh_sans_bold"
+        android:gravity="left|center"
+        android:text="Hotel Booking in Sariaya "
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/gradientView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.152"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view56"
+        app:layout_constraintVertical_bias="0.628" />
 
     <View
         android:id="@+id/gradientView"
@@ -58,7 +115,7 @@
         android:id="@+id/fullNameTextView"
         android:layout_width="298dp"
         android:layout_height="31dp"
-        android:fontFamily="@font/kumbh_sans_light"
+        android:fontFamily="@font/kumbh_sans_bold"
         android:gravity="left|center"
         android:text="Full Name: "
         android:textColor="@color/red"
@@ -272,5 +329,6 @@
         app:layout_constraintStart_toStartOf="@+id/view56"
         app:layout_constraintTop_toTopOf="@+id/view56"
         app:layout_constraintVertical_bias="0.782" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

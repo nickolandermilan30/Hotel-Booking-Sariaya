@@ -3,6 +3,7 @@
     <array name="preloaded_fonts" translatable="false">
         <item>@font/alata</item>
         <item>@font/berkshire_swash</item>
+        <item>@font/kumbh_sans_bold</item>
         <item>@font/kumbh_sans_light</item>
     </array>
 </resources>
