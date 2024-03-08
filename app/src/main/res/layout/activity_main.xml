@@ -5,9 +5,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:background="@color/white_brown"
     tools:context=".MainActivity">
 
+    <ImageButton
+        android:id="@+id/logout"
+        android:layout_width="47dp"
+        android:layout_height="47dp"
+        android:background="@drawable/button5"
+        app:layout_constraintBottom_toTopOf="@+id/view5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.88"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.065" />
 
     <TextView
         android:id="@+id/phoneNumberTextView"
@@ -17,21 +28,22 @@
         android:fontFamily="@font/alata"
         android:gravity="left|center"
         android:text="Phone Number: "
-        android:textColor="@color/red"
+        android:textColor="@color/white_brown"
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.065"
+        app:layout_constraintHorizontal_bias="0.404"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.069" />
+        app:layout_constraintTop_toTopOf="@+id/view5"
+        app:layout_constraintVertical_bias="0.957" />
+
 
     <TextView
         android:id="@+id/fullNameTextView"
-        android:layout_width="319dp"
-        android:layout_height="27dp"
-        android:fontFamily="@font/alata"
+        android:layout_width="298dp"
+        android:layout_height="31dp"
+        android:fontFamily="@font/kumbh_sans_light"
         android:gravity="left|center"
         android:text="Full Name: "
         android:textColor="@color/red"
@@ -39,10 +51,174 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.424"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.022" />
+        app:layout_constraintVertical_bias="0.097" />
 
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="91dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="@font/kumbh_sans_light"
+        android:gravity="left|center"
+        android:text="Wellcome"
+        android:textAlignment="center"
+        android:textColor="@color/red"
+        android:textSize="16dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/view5"
+        app:layout_constraintEnd_toEndOf="@+id/fullNameTextView"
+        app:layout_constraintHorizontal_bias="0.066"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.062" />
+
+    <View
+        android:id="@+id/view5"
+        android:layout_width="421dp"
+        android:layout_height="84dp"
+        android:background="@drawable/nav"
+        android:elevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageButton
+        android:id="@+id/b1"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="top|start"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/home"
+        android:backgroundTint="@color/red"
+        android:elevation="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view5"
+        app:layout_constraintEnd_toStartOf="@+id/b2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view5"
+        app:layout_constraintVertical_bias="0.431" />
+
+
+    <ImageButton
+        android:id="@+id/b2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="top|start"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/reserv"
+        android:elevation="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view5"
+        app:layout_constraintEnd_toStartOf="@+id/b3"
+        app:layout_constraintStart_toEndOf="@+id/b1"
+        app:layout_constraintTop_toTopOf="@+id/view5"
+        app:layout_constraintVertical_bias="0.431" />
+
+    <ImageButton
+        android:id="@+id/b3"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="top|start"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/room"
+        android:elevation="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view5"
+        app:layout_constraintEnd_toStartOf="@+id/b4"
+        app:layout_constraintStart_toEndOf="@+id/b2"
+        app:layout_constraintTop_toTopOf="@+id/view5"
+        app:layout_constraintVertical_bias="0.431" />
+
+    <ImageButton
+        android:id="@+id/b4"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="top|start"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/more"
+        android:elevation="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/b3"
+        app:layout_constraintTop_toTopOf="@+id/view5"
+        app:layout_constraintVertical_bias="0.431" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="75dp"
+        android:layout_height="20dp"
+        android:elevation="10dp"
+        android:fontFamily="@font/kumbh_sans_light"
+        android:gravity="center"
+        android:text="Explore"
+        android:textAlignment="center"
+        android:textColor="@color/red"
+        android:textSize="9dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/b1"
+        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintStart_toStartOf="@+id/b1"
+        app:layout_constraintTop_toBottomOf="@+id/b1"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="75dp"
+        android:layout_height="20dp"
+        android:elevation="10dp"
+        android:fontFamily="@font/kumbh_sans_light"
+        android:gravity="center"
+        android:text="Check in"
+        android:textAlignment="center"
+        android:textColor="@color/gray"
+        android:textSize="9dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/b2"
+        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintStart_toStartOf="@+id/b2"
+        app:layout_constraintTop_toBottomOf="@+id/b2"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="63dp"
+        android:layout_height="21dp"
+        android:elevation="10dp"
+        android:fontFamily="@font/kumbh_sans_light"
+        android:gravity="center"
+        android:text="Rooms"
+        android:textAlignment="center"
+        android:textColor="@color/gray"
+        android:textSize="9dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/b3"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="@+id/b3"
+        app:layout_constraintTop_toBottomOf="@+id/b3"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="63dp"
+        android:layout_height="21dp"
+        android:elevation="10dp"
+        android:fontFamily="@font/kumbh_sans_light"
+        android:gravity="center"
+        android:text="More"
+        android:textAlignment="center"
+        android:textColor="@color/gray"
+        android:textSize="9dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/b4"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="@+id/b4"
+        app:layout_constraintTop_toBottomOf="@+id/b4"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
