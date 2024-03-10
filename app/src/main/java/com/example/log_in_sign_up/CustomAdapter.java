@@ -8,41 +8,51 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
-import java.util.List;
+import java.util.ArrayList;
 
 public class CustomAdapter extends ArrayAdapter<String> {
 
-    private final Context context;
-    private final List<String> hotelList;
+    private Context context;
+    private int layoutResourceId;
+    private ArrayList<String> data;
+    private int[] images;
 
-    public CustomAdapter(Context context, int resource, List<String> hotelList) {
-        super(context, resource, hotelList);
+    public CustomAdapter(Context context, int layoutResourceId, ArrayList<String> data, int[] images) {
+        super(context, layoutResourceId, data);
         this.context = context;
-        this.hotelList = hotelList;
+        this.layoutResourceId = layoutResourceId;
+        this.data = data;
+        this.images = images;
     }
-
-    @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(getLayoutResourceId(position), parent, false);
+    public View getView(int position, View convertView, ViewGroup parent) {
+        View row = convertView;
+        ViewHolder holder;
 
-        // Customize the view for each list item
-        TextView hotelNameTextView = view.findViewById(R.id.hotelName);
-        ImageView hotelImageView = view.findViewById(R.id.hotelImage);
+        if (row == null) {
+            LayoutInflater inflater = LayoutInflater.from(context);
+            row = inflater.inflate(layoutResourceId, parent, false);
 
-        String hotelName = hotelList.get(position);
-        hotelNameTextView.setText(hotelName);
+            holder = new ViewHolder();
+            holder.textView = row.findViewById(R.id.hotelName);
+            holder.imageView = row.findViewById(R.id.hotelImage);
 
-        // Set the appropriate image for each hotel
-        int imageResourceId = getImageResourceId(position);
-        hotelImageView.setImageResource(imageResourceId);
+            row.setTag(holder);
+        } else {
+            holder = (ViewHolder) row.getTag();
+        }
 
-        return view;
+        holder.textView.setText(data.get(position));
+        holder.imageView.setImageResource(images[position]);
+
+        return row;
     }
+
+    static class ViewHolder {
+        TextView textView;
+        ImageView imageView;
+    }
+
 
     // Define the layout resource ID for each hotel
     private int getLayoutResourceId(int position) {
