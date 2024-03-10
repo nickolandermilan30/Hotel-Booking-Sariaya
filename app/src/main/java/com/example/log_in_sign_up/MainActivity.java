@@ -5,14 +5,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private static final int PICK_IMAGE = 1;
@@ -28,7 +32,40 @@ public class MainActivity extends AppCompatActivity {
         // Initialize databaseReference
         databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://loginregister-4f25b-default-rtdb.firebaseio.com/");
 
+        RecyclerView recyclerView = findViewById(R.id.recycler);
+        ArrayList<String> arrayList = new ArrayList<>();
 
+        //Add multiple images to arraylist.
+        arrayList.add("https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0b/0c/4a/0d/main-pool-area-fresh.jpg?w=1200&h=-1&s=1");
+        arrayList.add("https://dynamic-media-cdn.tripadvisor.com/media/photo-o/07/dc/9f/1d/monte-vista-beach-resort.jpg?w=1200&h=-1&s=1");
+        arrayList.add("https://images.summitmedia-digital.com/spotph/images/2023/05/19/the-seves-hotel-resort-sariaya-quezon-6-1684493616.jpg");
+        arrayList.add("https://dynamic-media-cdn.tripadvisor.com/media/photo-o/03/bf/8b/98/balai-sadyaya-resort.jpg?w=1000&h=-1&s=1");
+        arrayList.add("https://cf.bstatic.com/xdata/images/hotel/max1024x768/349485169.jpg?k=041463d981428c913a654c98f2cb367051f023c59a895cf1cb9e995a3a60d04d&o=&hp=1");
+        arrayList.add("https://dynamic-media-cdn.tripadvisor.com/media/photo-o/07/cb/66/14/enjoy-much.jpg?w=700&h=-1&s=1");
+
+
+
+        ImageAdapter adapter = new ImageAdapter(MainActivity.this, arrayList);
+        recyclerView.setAdapter(adapter);
+        TextView seeAllTextView = findViewById(R.id.seeall);
+
+        // Set an OnClickListener for the TextView
+        seeAllTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Start the new activity when the TextView is clicked
+                Intent intent = new Intent(MainActivity.this, Hotels.class);
+                startActivity(intent);
+            }
+        });
+
+        adapter.setOnItemClickListener(new ImageAdapter.OnItemClickListener() {
+
+            @Override
+            public void onClick(ImageView imageView, String path) {
+
+            }
+        });
 
         // Retrieve user information from Intent
         Bundle extras = getIntent().getExtras();

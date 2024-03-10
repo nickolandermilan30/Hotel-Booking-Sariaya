@@ -5,14 +5,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white_brown"
+    android:background="@color/white"
     tools:context=".MainActivity">
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="400sp"
+        android:layout_height="200sp"
+        android:layout_marginTop="25dp"
+        app:layoutManager="com.google.android.material.carousel.CarouselLayoutManager"
+        app:layout_constraintBottom_toTopOf="@+id/view5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gradientView"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView19"
+        android:layout_width="91dp"
+        android:layout_height="20dp"
+        android:fontFamily="@font/kumbh_sans_bold"
+        android:gravity="left|center"
+        android:text="Explore  "
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/recycler"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.093"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gradientView"
+        app:layout_constraintVertical_bias="0.421" />
+
+    <TextView
+        android:id="@+id/seeall"
+        android:layout_width="91dp"
+        android:layout_height="20dp"
+        android:fontFamily="@font/kumbh_sans_bold"
+        android:gravity="left|center"
+        android:text="See all  "
+        android:textAlignment="center"
+        android:textColor="@color/sky_blue"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/recycler"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.849"
+        app:layout_constraintStart_toEndOf="@+id/textView19"
+        app:layout_constraintTop_toBottomOf="@+id/gradientView"
+        app:layout_constraintVertical_bias="0.421" />
 
     <View
         android:id="@+id/view10"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="6dp"
         android:background="@drawable/location"
         android:elevation="20dp"
         app:layout_constraintBottom_toBottomOf="@+id/view9"
@@ -64,7 +111,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.152"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view56"
+        app:layout_constraintTop_toBottomOf="@+id/cardView"
         app:layout_constraintVertical_bias="0.628" />
 
     <View
@@ -306,42 +353,54 @@
         app:layout_constraintTop_toBottomOf="@+id/b4"
         app:layout_constraintVertical_bias="0.0" />
 
-    <View
-        android:id="@+id/view56"
-        android:layout_width="332dp"
-        android:layout_height="53dp"
-        android:background="@drawable/nav4"
-        app:layout_constraintBottom_toTopOf="@+id/view5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.2" />
 
-    <EditText
+
+
+<EditText
         android:id="@+id/phone"
         android:layout_width="300dp"
         android:layout_height="42dp"
         android:background="@null"
         android:fontFamily="@font/kumbh_sans_light"
         android:hint="Search"
+        android:elevation="10dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/view56"
-        app:layout_constraintEnd_toEndOf="@+id/view56"
-        app:layout_constraintStart_toStartOf="@+id/view56"
-        app:layout_constraintTop_toTopOf="@+id/view56" />
+        app:layout_constraintBottom_toBottomOf="@+id/cardView"
+        app:layout_constraintEnd_toEndOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="@+id/cardView"
+        app:layout_constraintTop_toTopOf="@+id/cardView" />
 
     <View
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginBottom="7dp"
         android:background="@drawable/search"
-        app:layout_constraintBottom_toBottomOf="@+id/view56"
-        app:layout_constraintEnd_toEndOf="@+id/view56"
+        android:elevation="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView"
+        app:layout_constraintEnd_toEndOf="@+id/cardView"
         app:layout_constraintHorizontal_bias="0.973"
-        app:layout_constraintStart_toStartOf="@+id/view56"
-        app:layout_constraintTop_toTopOf="@+id/view56"
+        app:layout_constraintStart_toStartOf="@+id/cardView"
+        app:layout_constraintTop_toTopOf="@+id/cardView"
         app:layout_constraintVertical_bias="0.782" />
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="332dp"
+        android:layout_height="53dp"
+        app:cardCornerRadius="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/view5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2">
+
+        <View
+            android:id="@+id/view56"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/nav4" />
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
