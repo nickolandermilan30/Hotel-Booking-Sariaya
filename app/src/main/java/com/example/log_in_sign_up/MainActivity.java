@@ -1,7 +1,9 @@
 package com.example.log_in_sign_up;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -53,11 +55,24 @@ public class MainActivity extends AppCompatActivity {
         seeAllTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Start the new activity when the TextView is clicked
-                Intent intent = new Intent(MainActivity.this, Hotels.class);
-                startActivity(intent);
+                // Show loading dialog
+                showLoadingDialog();
+
+                // Start the new activity after a delay (you can replace this with your actual loading logic)
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Dismiss loading dialog
+                        dismissLoadingDialog();
+
+                        // Start the new activity when the TextView is clicked
+                        Intent intent = new Intent(MainActivity.this, Hotels.class);
+                        startActivity(intent);
+                    }
+                }, 2000); // Replace 2000 with the desired delay in milliseconds
             }
         });
+
 
         adapter.setOnItemClickListener(new ImageAdapter.OnItemClickListener() {
 
@@ -91,6 +106,21 @@ public class MainActivity extends AppCompatActivity {
             });
 
 
+        }
+    }
+
+    private ProgressDialog progressDialog;
+
+    private void showLoadingDialog() {
+        progressDialog = new ProgressDialog(MainActivity.this);
+        progressDialog.setMessage("Loading...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+    }
+
+    private void dismissLoadingDialog() {
+        if (progressDialog != null && progressDialog.isShowing()) {
+            progressDialog.dismiss();
         }
     }
 

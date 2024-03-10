@@ -1,0 +1,33 @@
+<layer-list xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:ignore="MissingDefaultResource">
+
+    <!-- Background Shape -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#989898" /> <!-- Change color here -->
+            <corners
+                android:bottomRightRadius="1000dp"
+                android:bottomLeftRadius="1000dp"
+                android:topRightRadius="1000dp"
+                android:topLeftRadius="1000dp" />
+            <stroke
+                android:width="2dp"
+                android:color="#989898"
+                />
+
+            <!-- Change stroke color here -->
+        </shape>
+    </item>
+
+    <!-- Image with Color Filter and Rotation -->
+    <item>
+        <rotate
+            android:drawable="@drawable/back"
+            android:fromDegrees="150"
+            android:toDegrees="100"
+            android:pivotX="50%"
+            android:pivotY="50%" />
+    </item>
+
+</layer-list>
