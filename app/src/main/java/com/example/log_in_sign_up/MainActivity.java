@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
         ImageAdapter adapter = new ImageAdapter(MainActivity.this, arrayList);
         recyclerView.setAdapter(adapter);
-        TextView seeAllTextView = findViewById(R.id.seeall);
+        ImageButton seeAllTextView = findViewById(R.id.reservenow);
 
         // Set an OnClickListener for the TextView
         seeAllTextView.setOnClickListener(new View.OnClickListener() {
@@ -67,11 +67,16 @@ public class MainActivity extends AppCompatActivity {
 
                         // Start the new activity when the TextView is clicked
                         Intent intent = new Intent(MainActivity.this, Hotels.class);
+
+                        // Add the user's full name to the Intent
+                        intent.putExtra("FullName", fullName);
+
                         startActivity(intent);
                     }
                 }, 2000); // Replace 2000 with the desired delay in milliseconds
             }
         });
+
 
 
         adapter.setOnItemClickListener(new ImageAdapter.OnItemClickListener() {

@@ -8,6 +8,15 @@
     tools:context=".Detail1">
 
     <TextView
+        android:id="@+id/fullNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="16dp"
+        android:padding="16dp" />
+
+    <TextView
         android:id="@+id/quezon"
         android:layout_width="135dp"
         android:layout_height="31dp"

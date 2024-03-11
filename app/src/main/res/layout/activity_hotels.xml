@@ -7,6 +7,14 @@
     android:layout_height="match_parent"
     tools:context=".Hotels">
 
+    <TextView
+        android:id="@+id/fullNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:textColor="#FFFFFF"
+        android:layout_centerInParent="true"
+        android:padding="16dp" />
 
     <ImageButton
         android:id="@+id/back"

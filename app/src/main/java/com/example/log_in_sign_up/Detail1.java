@@ -1,5 +1,6 @@
 package com.example.log_in_sign_up;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -19,6 +20,13 @@ public class Detail1 extends AppCompatActivity {
         setContentView(R.layout.activity_detail1);
 
         ImageButton backButton = findViewById(R.id.back);
+
+        Intent intent = getIntent();
+        String fullName = intent.getStringExtra("FullName");
+
+        // Display the user's full name in a TextView or any other UI component
+        TextView fullNameTextView = findViewById(R.id.fullNameTextView);
+        fullNameTextView.setText(fullName);
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,6 +51,7 @@ public class Detail1 extends AppCompatActivity {
             String customText3 = extras.getString("customText3");
             String customText4 = extras.getString("customText4");
 
+
             // Set the hotel details in the UI
             TextView hotelNameTextView = findViewById(R.id.hotelName);
             TextView customTextView = findViewById(R.id.activityName);
@@ -61,6 +70,26 @@ public class Detail1 extends AppCompatActivity {
             ViewPager2 viewPager2 = findViewById(R.id.viewPager);
             ImagePagerAdapter adapter = new ImagePagerAdapter(this, new int[]{hotelImageId1, hotelImageId2});
             viewPager2.setAdapter(adapter);
+
+           // Set onClickListener for the "Book Now" button
+            bookNowButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // Create an Intent to navigate to ConfirmActivity
+                    Intent intent = new Intent(Detail1.this, Confirmation.class);
+
+                    // Pass necessary data to ConfirmActivity
+                    intent.putExtra("hotelName", hotelName);
+                    intent.putExtra("activityName", customText); // Custom text from extras
+                    intent.putExtra("location", customText2); // Custom text 2 from extras
+
+                    // Pass the user's full name to Confirmation activity
+                    intent.putExtra("userName", fullName);
+
+                    // Start ConfirmActivity
+                    startActivity(intent);
+                }
+            });
         }
     }
 }

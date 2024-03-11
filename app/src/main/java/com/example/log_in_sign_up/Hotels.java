@@ -8,6 +8,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,6 +20,14 @@ public class Hotels extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hotels);
+
+        Intent intent = getIntent();
+        String fullName = intent.getStringExtra("FullName");
+
+        // Display the user's full name in a TextView or any other UI component
+        TextView fullNameTextView = findViewById(R.id.fullNameTextView);
+        fullNameTextView.setText(fullName);
+
 
         ListView listView = findViewById(R.id.listView);
         ImageButton backButton = findViewById(R.id.back);
@@ -146,9 +155,13 @@ public class Hotels extends AppCompatActivity {
                 intent.putExtra("customText3", customTexts3[position]);
                 intent.putExtra("customText4", customTexts4[position]);
 
+                // Pass the fullName to Detail1 activity
+                intent.putExtra("FullName", fullName);
+
                 // Start the details activity
                 startActivity(intent);
             }
         });
+
     }
 }
