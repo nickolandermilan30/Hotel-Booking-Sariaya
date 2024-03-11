@@ -23,7 +23,7 @@
     <!-- Image with Color Filter and Rotation -->
     <item>
         <rotate
-            android:drawable="@drawable/back"
+            android:drawable="@drawable/back2"
             android:fromDegrees="150"
             android:toDegrees="100"
             android:pivotX="50%"

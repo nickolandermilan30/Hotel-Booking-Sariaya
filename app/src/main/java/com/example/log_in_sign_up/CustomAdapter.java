@@ -17,7 +17,7 @@ public class CustomAdapter extends ArrayAdapter<String> {
     private ArrayList<String> data;
     private int[] images;
 
-    public CustomAdapter(Context context, int layoutResourceId, ArrayList<String> data, int[] images) {
+    public CustomAdapter(Context context, int layoutResourceId, String[] customTexts2, String[] texts2, String[] strings, ArrayList<String> data, int[] images, int[] hotelImages2, String[] customTexts) {
         super(context, layoutResourceId, data);
         this.context = context;
         this.layoutResourceId = layoutResourceId;

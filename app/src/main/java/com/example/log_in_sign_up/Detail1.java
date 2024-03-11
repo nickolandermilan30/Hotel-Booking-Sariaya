@@ -1,10 +1,15 @@
 package com.example.log_in_sign_up;
 
 import android.os.Bundle;
-import android.widget.ImageView;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager2.widget.ViewPager2;
 
 public class Detail1 extends AppCompatActivity {
 
@@ -13,21 +18,49 @@ public class Detail1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail1);
 
+        ImageButton backButton = findViewById(R.id.back);
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Apply the animation
+                Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shadow_animation);
+                backButton.startAnimation(animation);
+
+                // Handle back button click (e.g., navigate back to the previous activity)
+                onBackPressed();
+            }
+        });
+
         // Get the extras from the Intent
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             String hotelName = extras.getString("hotelName");
-            String activityName = extras.getString("activityName");
-            int hotelImageId = extras.getInt("hotelImage");
+            int hotelImageId1 = extras.getInt("hotelImage1");
+            int hotelImageId2 = extras.getInt("hotelImage2");
+            String customText = extras.getString("customText");
+            String customText2 = extras.getString("customText2");
+            String customText3 = extras.getString("customText3");
+            String customText4 = extras.getString("customText4");
 
             // Set the hotel details in the UI
             TextView hotelNameTextView = findViewById(R.id.hotelName);
-            TextView activityNameTextView = findViewById(R.id.activityName);
-            ImageView hotelImageView = findViewById(R.id.hotelImage);
+            TextView customTextView = findViewById(R.id.activityName);
+            TextView customTextView2 = findViewById(R.id.location);
+            TextView customTextView3 = findViewById(R.id.cancelation);
+            TextView customTextView4 = findViewById(R.id.about);
+            Button bookNowButton = findViewById(R.id.bookNowButton);
 
             hotelNameTextView.setText(hotelName);
-            activityNameTextView.setText(activityName);
-            hotelImageView.setImageResource(hotelImageId);
+            customTextView.setText(customText);
+            customTextView2.setText(customText2);
+            customTextView3.setText(customText3);
+            customTextView4.setText(customText4);
+
+            // Set up ViewPager2
+            ViewPager2 viewPager2 = findViewById(R.id.viewPager);
+            ImagePagerAdapter adapter = new ImagePagerAdapter(this, new int[]{hotelImageId1, hotelImageId2});
+            viewPager2.setAdapter(adapter);
         }
     }
 }

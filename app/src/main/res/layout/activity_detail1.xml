@@ -1,42 +1,225 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     tools:context=".Detail1">
 
-    <ImageView
-        android:id="@+id/hotelImage"
+    <TextView
+        android:id="@+id/quezon"
+        android:layout_width="135dp"
+        android:layout_height="31dp"
+        android:gravity="center|left"
+        android:text="Location"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.057"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hotelName"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="135dp"
+        android:layout_height="31dp"
+        android:gravity="center|left"
+        android:text="Quezon Province"
+        android:textColor="@color/sky_blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.202"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hotelName"
+        app:layout_constraintVertical_bias="0.091" />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="135dp"
+        android:layout_height="31dp"
+        android:layout_marginBottom="5dp"
+        android:gravity="center|left"
+        android:text="Price Range"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.057"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hotelName"
+        app:layout_constraintVertical_bias="0.244" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="189dp"
+        android:layout_height="42dp"
+        android:elevation="10dp"
+        android:fontFamily="@font/kumbh_sans_bold"
+        android:gravity="center"
+        android:text="About The Hotel "
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/viewPager"
+        app:layout_constraintEnd_toEndOf="@+id/view11"
+        app:layout_constraintStart_toStartOf="@+id/view11"
+        app:layout_constraintTop_toTopOf="@+id/view11" />
+
+    <ImageButton
+        android:id="@+id/back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/button8"
+        android:elevation="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view11"
+        app:layout_constraintEnd_toEndOf="@+id/view11"
+        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintStart_toStartOf="@+id/view11"
+        app:layout_constraintTop_toTopOf="@+id/view11"
+        app:layout_constraintVertical_bias="0.8" />
+
+    <View
+        android:id="@+id/view11"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@drawable/nav7"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
         android:layout_width="0dp"
         android:layout_height="200dp"
-        android:scaleType="centerCrop"
+        android:layout_marginTop="68dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+
     <TextView
         android:id="@+id/hotelName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_width="228dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="24dp"
         android:text="Hotel Name"
         android:textAppearance="?android:textAppearanceLarge"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.088"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hotelImage" />
+        app:layout_constraintTop_toBottomOf="@+id/viewPager" />
+
 
     <TextView
         android:id="@+id/activityName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Activity Name"
-        android:textAppearance="?android:textAppearanceMedium"
+        android:layout_width="197dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="104dp"
+        android:gravity="center|left"
+        android:text="₱1,386 - ₱1,728 "
+        android:textSize="20dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.074"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hotelName" />
+
+    <TextView
+        android:id="@+id/cancelation"
+        android:layout_width="135dp"
+        android:layout_height="31dp"
+        android:gravity="center|left"
+        android:text="Free Cancelation"
+        android:textColor="@color/red"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.771"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hotelName"
+        app:layout_constraintVertical_bias="0.305" />
+
+    <ImageButton
+        android:id="@+id/hart"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/button9"
+        android:elevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.88"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewPager"
+        app:layout_constraintVertical_bias="0.065" />
+
+    <ImageButton
+        android:id="@+id/loc"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/button10"
+        android:elevation="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/price"
+        app:layout_constraintEnd_toStartOf="@+id/location"
+        app:layout_constraintHorizontal_bias="0.615"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quezon"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="336dp"
+        android:layout_height="153dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.426"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hotelName"
+        app:layout_constraintVertical_bias="0.697">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:id="@+id/about"
+                android:layout_width="334dp"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/kumbh_sans_light"
+                android:gravity="center|left"
+                android:justificationMode="inter_word"
+                android:text="about"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.542"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintVertical_bias="0.081" />
+
+            <!-- Iba pang mga Scrollable na View at Widgets dito -->
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/bookNowButton"
+        android:layout_width="300dp"
+        android:layout_height="44dp"
+        android:backgroundTint="@color/sky_blue"
+        android:text="Book Now"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView"
+        app:layout_constraintVertical_bias="0.272" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

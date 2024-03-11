@@ -5,7 +5,7 @@
     <!-- Background Shape -->
     <item>
         <shape android:shape="rectangle">
-            <solid android:color="@color/white" /> <!-- Change color here -->
+            <solid android:color="@color/sky_blue" /> <!-- Change color here -->
             <corners
                 android:bottomRightRadius="10dp"
                 android:bottomLeftRadius="10dp"
@@ -13,7 +13,7 @@
                 android:topLeftRadius="10dp" />
             <stroke
                 android:width="2dp"
-                android:color="@color/white"
+                android:color="@color/sky_blue"
                 />
 
             <!-- Change stroke color here -->
@@ -22,11 +22,11 @@
 
     <!-- Image with Color Filter -->
     <item
-        android:drawable="@drawable/back"
-        android:left="13dp"
-        android:top="13dp"
-        android:right="13dp"
-        android:bottom="13dp"/>
+        android:drawable="@drawable/location"
+        android:left="5dp"
+        android:top="5dp"
+        android:right="5dp"
+        android:bottom="5dp"/>
 
 
 </layer-list>

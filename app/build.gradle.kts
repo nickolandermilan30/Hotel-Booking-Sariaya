@@ -39,6 +39,7 @@ dependencies {
 
     implementation ("com.google.android.material:material:1.9.0")
     implementation ("com.github.bumptech.glide:glide:4.16.0")
+    implementation ("androidx.viewpager2:viewpager2:1.0.0")
 
     implementation(platform("com.google.firebase:firebase-bom:32.7.3"))
     implementation("androidx.appcompat:appcompat:1.6.1")
