@@ -1,5 +1,6 @@
 package com.example.log_in_sign_up;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -17,6 +18,16 @@ public class Confirmation extends AppCompatActivity {
         setContentView(R.layout.activity_confirmation);
 
         ImageButton backButton = findViewById(R.id.back);
+        ImageButton roomButton = findViewById(R.id.room);
+
+        roomButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Pumunta sa Room activity kapag pindutin ang button na "Room"
+                Intent intent = new Intent(Confirmation.this, RoomActivity.class);
+                startActivity(intent);
+            }
+        });
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
