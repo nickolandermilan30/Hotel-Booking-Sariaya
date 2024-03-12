@@ -1,6 +1,10 @@
 package com.example.log_in_sign_up;
 
 import android.os.Bundle;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +15,20 @@ public class Confirmation extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirmation);
+
+        ImageButton backButton = findViewById(R.id.back);
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Apply the animation
+                Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shadow_animation);
+                backButton.startAnimation(animation);
+
+                // Handle back button click (e.g., navigate back to the previous activity)
+                onBackPressed();
+            }
+        });
 
         // Retrieve data from Intent
         Bundle extras = getIntent().getExtras();
