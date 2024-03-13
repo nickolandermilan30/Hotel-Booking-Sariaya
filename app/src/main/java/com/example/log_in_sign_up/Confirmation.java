@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class Confirmation extends AppCompatActivity {
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +46,7 @@ public class Confirmation extends AppCompatActivity {
         // Retrieve data from Intent
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
+            String roomName = extras.getString("roomName");
             String hotelName = extras.getString("hotelName");
             String activityName = extras.getString("activityName");
             String location = extras.getString("location");
@@ -56,7 +59,9 @@ public class Confirmation extends AppCompatActivity {
             TextView activityNameTextView = findViewById(R.id.activityNameTextView);
             TextView locationTextView = findViewById(R.id.locationTextView);
             TextView userNameTextView = findViewById(R.id.userNameTextView);
+            TextView roomNameTextView = findViewById(R.id.textView2);
 
+            roomNameTextView.setText(roomName);
             hotelNameTextView.setText(hotelName);
             activityNameTextView.setText(activityName);
             locationTextView.setText(location);
