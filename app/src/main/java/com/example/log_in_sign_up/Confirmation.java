@@ -5,14 +5,17 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.CalendarView;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Confirmation extends AppCompatActivity {
 
-
+    private CalendarView calendarView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +24,16 @@ public class Confirmation extends AppCompatActivity {
 
         ImageButton backButton = findViewById(R.id.back);
         ImageButton roomButton = findViewById(R.id.room);
+        calendarView = findViewById(R.id.calendarView);
+
+        // I-set ang OnDateChangeListener sa CalendarView
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+               String selectedDate = (month + 1) + "/" +  dayOfMonth + "/" + year;
+                Toast.makeText(Confirmation.this, "Selected Date: " + selectedDate, Toast.LENGTH_SHORT).show();
+            }
+        });
 
         roomButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,7 +80,6 @@ public class Confirmation extends AppCompatActivity {
             locationTextView.setText(location);
             userNameTextView.setText(userName);
 
-            // Set other data to respective TextViews
         }
     }
 }
