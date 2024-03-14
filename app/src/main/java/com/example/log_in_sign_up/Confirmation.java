@@ -96,7 +96,7 @@ public class Confirmation extends AppCompatActivity {
                 backButton.startAnimation(animation);
 
                 // Create Intent to navigate back to the previous activity (Detail1)
-                Intent intent = new Intent(Confirmation.this, MainActivity.class);
+                Intent intent = new Intent(Confirmation.this, Hotels.class);
                 startActivity(intent);
 
                 // Finish the current activity

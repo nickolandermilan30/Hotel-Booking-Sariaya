@@ -1,0 +1,23 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Background Shape -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/sky_blue" /> <!-- Change color here -->
+            <corners
+                android:bottomRightRadius="10dp"
+                android:bottomLeftRadius="10dp"
+                android:topRightRadius="10dp"
+                android:topLeftRadius="10dp" />
+            <stroke
+                android:width="0dp"
+                android:color="@color/sky_blue"
+                />
+
+            <!-- Change stroke color here -->
+        </shape>
+    </item>
+
+
+
+</layer-list>
