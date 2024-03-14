@@ -22,7 +22,7 @@ public class RoomActivity extends AppCompatActivity {
 
         // Display the selected date in a TextView
         TextView selectedDateTextView = findViewById(R.id.selectedDateTextView);
-        selectedDateTextView.setText("Selected Date: " + selectedDate);
+        selectedDateTextView.setText(selectedDate);
 
         // Get the extras from Intent
         Bundle extras = getIntent().getExtras();
