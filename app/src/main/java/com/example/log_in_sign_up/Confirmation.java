@@ -1,5 +1,6 @@
 package com.example.log_in_sign_up;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Calendar;
@@ -24,10 +26,36 @@ public class Confirmation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirmation);
 
-
+        ImageButton doneButton = findViewById(R.id.done);
         ImageButton backButton = findViewById(R.id.back);
         ImageButton roomButton = findViewById(R.id.room);
         calendarView = findViewById(R.id.calendarView);
+
+        // Find TextViews in the layout file
+        TextView selectedDateTextView = findViewById(R.id.selectedDateTextView);
+        TextView hotelNameTextView = findViewById(R.id.hotelNameTextView);
+        TextView activityNameTextView = findViewById(R.id.activityNameTextView);
+        TextView locationTextView = findViewById(R.id.locationTextView);
+        TextView userNameTextView = findViewById(R.id.userNameTextView);
+        TextView roomNameTextView = findViewById(R.id.textView2);
+
+        // Retrieve data from Intent
+        Intent intent = getIntent();
+        String roomName = intent.getStringExtra("roomName");
+        String hotelName = intent.getStringExtra("hotelName");
+        String activityName = intent.getStringExtra("activityName");
+        String location = intent.getStringExtra("location");
+        String userName = intent.getStringExtra("userName");
+        selectedDate = intent.getStringExtra("selectedDate");
+
+        // Set the text for each TextView
+        selectedDateTextView.setText("Selected Date: " + selectedDate);
+        hotelNameTextView.setText(hotelName);
+        activityNameTextView.setText(activityName);
+        locationTextView.setText(location);
+        userNameTextView.setText(userName);
+        roomNameTextView.setText(roomName);
+
 
         // I-set ang OnDateChangeListener sa CalendarView
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -41,23 +69,45 @@ public class Confirmation extends AppCompatActivity {
             }
         });
 
+        // I-set ang OnClickListener para sa "Done" button
+        doneButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Suriin kung kumpleto na ang mga detalye
+                if (selectedDate == null || selectedDate.isEmpty() || roomName.isEmpty()) {
+                    // Kung hindi kumpleto, ipakita ang alert dialog
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Confirmation.this);
+                    builder.setMessage("You need to complete the List.");
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    AlertDialog alertDialog = builder.create();
+                    alertDialog.show();
+                } else {
+                    // Kung kumpleto, lumikha ng Intent papunta sa ListActivity
+                    Intent intent = new Intent(Confirmation.this, ListActivity.class);
 
-        // Retrieve data from Intent
-        Intent intent = getIntent();
-        String roomName = intent.getStringExtra("roomName");
-        String hotelName = intent.getStringExtra("hotelName");
-        String activityName = intent.getStringExtra("activityName");
-        String location = intent.getStringExtra("location");
-        String userName = intent.getStringExtra("userName");
-        selectedDate = intent.getStringExtra("selectedDate");
+                    // Ilagay ang lahat ng mga data na kailangan mo sa Intent
+                    intent.putExtra("userName", userName);
+                    intent.putExtra("hotelName", hotelName);
+                    intent.putExtra("location", location);
+                    intent.putExtra("activityName", activityName);
+                    intent.putExtra("roomName", roomName);
+                    intent.putExtra("selectedDate", selectedDate);
 
-        // Find TextViews in the layout file
-        TextView selectedDateTextView = findViewById(R.id.selectedDateTextView);
-        TextView hotelNameTextView = findViewById(R.id.hotelNameTextView);
-        TextView activityNameTextView = findViewById(R.id.activityNameTextView);
-        TextView locationTextView = findViewById(R.id.locationTextView);
-        TextView userNameTextView = findViewById(R.id.userNameTextView);
-        TextView roomNameTextView = findViewById(R.id.textView2);
+                    // Simulan ang ListActivity gamit ang Intent na may dala ng data
+                    startActivity(intent);
+                }
+            }
+        });
+
+
+
+
+
 
         // Set the text for each TextView
         selectedDateTextView.setText("Selected Date: " + selectedDate);
