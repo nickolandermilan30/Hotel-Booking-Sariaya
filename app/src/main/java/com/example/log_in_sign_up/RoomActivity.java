@@ -97,21 +97,5 @@ public class RoomActivity extends AppCompatActivity {
         } else if (background instanceof ColorDrawable) {
             ((ColorDrawable) background).setColor(Color.RED);
         }
-
-        // Remove the highlight after a delay of 1 second (1000 milliseconds)
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Drawable background = button.getBackground();
-                if (background instanceof ShapeDrawable) {
-                    ((ShapeDrawable) background).getPaint().setColor(Color.TRANSPARENT);
-                } else if (background instanceof GradientDrawable) {
-                    ((GradientDrawable) background).setColor(Color.TRANSPARENT);
-                } else if (background instanceof ColorDrawable) {
-                    ((ColorDrawable) background).setColor(Color.TRANSPARENT);
-                }
-            }
-        }, 1000); // 1000 milliseconds is equal to 1 second
     }
-
 }
