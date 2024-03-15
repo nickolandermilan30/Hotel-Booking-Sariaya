@@ -2,12 +2,8 @@ package com.example.log_in_sign_up;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -34,7 +30,13 @@ public class ListActivity extends AppCompatActivity {
         // Load saved items
         loadItems();
 
-        // Add new item
+        // Initialize adapter with empty list
+        adapter = new ArrayAdapter<>(this, R.layout.list_item_layout, new ArrayList<String>());
+
+        // Set adapter to list view
+        listView.setAdapter(adapter);
+
+        // Add new item if available
         String userName = getIntent().getStringExtra("userName");
         String hotelName = getIntent().getStringExtra("hotelName");
         String location = getIntent().getStringExtra("location");
@@ -42,50 +44,23 @@ public class ListActivity extends AppCompatActivity {
         String roomName = getIntent().getStringExtra("roomName");
         String selectedDate = getIntent().getStringExtra("selectedDate");
 
-        String itemDetails = "User Name: " + userName + "\n" +
-                "Hotel Name: " + hotelName + "\n" +
-                "Location: " + location + "\n" +
-                "Activity Name: " + activityName + "\n" +
-                "Room Name: " + roomName + "\n" +
-                "Selected Date: " + selectedDate;
+        if (userName != null && hotelName != null && location != null && activityName != null && roomName != null && selectedDate != null) {
+            String itemDetails = userName + "\n" +
+                    hotelName + "\n" +
+                    location + "\n" +
+                    activityName + "\n" +
+                    roomName + "\n" +
+                    selectedDate;
 
-        itemSet.add(itemDetails);
+            // Add the item details to itemSet
+            itemSet.add(itemDetails);
 
-        // Save items
-        saveItems();
+            // Save items
+            saveItems();
 
-        // Set adapter
-        adapter = new ArrayAdapter<String>(this, R.layout.list_item_layout, new ArrayList<String>(itemSet)) {
-            @Override
-            public View getView(int position, View convertView, ViewGroup parent) {
-                View view = convertView;
-                if (view == null) {
-                    LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-                    view = inflater.inflate(R.layout.list_item_layout, null);
-                }
-
-                TextView userNameTextView = view.findViewById(R.id.userNameTextView);
-                TextView hotelNameTextView = view.findViewById(R.id.hotelNameTextView);
-                TextView locationTextView = view.findViewById(R.id.locationTextView);
-                TextView activityNameTextView = view.findViewById(R.id.activityNameTextView);
-                TextView roomNameTextView = view.findViewById(R.id.roomNameTextView);
-                TextView selectedDateTextView = view.findViewById(R.id.selectedDateTextView);
-
-                // Split itemDetails to get individual fields
-                String[] fields = getItem(position).split("\n");
-
-                // Set text for TextViews
-                userNameTextView.setText(fields[0]);
-                hotelNameTextView.setText(fields[1]);
-                locationTextView.setText(fields[2]);
-                activityNameTextView.setText(fields[3]);
-                roomNameTextView.setText(fields[4]);
-                selectedDateTextView.setText(fields[5]);
-
-                return view;
-            }
-        };
-        listView.setAdapter(adapter);
+            // Update adapter with new item
+            adapter.add(itemDetails);
+        }
     }
 
     private void loadItems() {

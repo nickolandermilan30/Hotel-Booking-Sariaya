@@ -144,11 +144,6 @@ public class Confirmation extends AppCompatActivity {
                 // Apply the animation
                 Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shadow_animation);
                 backButton.startAnimation(animation);
-
-                // Create Intent to navigate back to the previous activity (Detail1)
-                Intent intent = new Intent(Confirmation.this, Hotels.class);
-                startActivity(intent);
-
                 // Finish the current activity
                 finish();
             }

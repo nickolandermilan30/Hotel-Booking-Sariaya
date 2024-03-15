@@ -9,7 +9,10 @@ import android.graphics.drawable.ShapeDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,6 +27,18 @@ public class RoomActivity extends AppCompatActivity {
         // Retrieve the selected date from the Intent
         Intent intent = getIntent();
         String selectedDate = intent.getStringExtra("selectedDate");
+        ImageButton backButton = findViewById(R.id.back);
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Apply the animation
+                Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shadow_animation);
+                backButton.startAnimation(animation);
+                // Finish the current activity
+                finish();
+            }
+        });
 
         // Display the selected date in a TextView
         TextView selectedDateTextView = findViewById(R.id.selectedDateTextView);
@@ -97,5 +112,7 @@ public class RoomActivity extends AppCompatActivity {
         } else if (background instanceof ColorDrawable) {
             ((ColorDrawable) background).setColor(Color.RED);
         }
+
+
     }
 }
