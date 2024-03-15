@@ -58,6 +58,10 @@ public class ListActivity extends AppCompatActivity {
 
         itemSet.add(itemDetails);
 
+        // Notify adapter of changes
+        adapter.add(itemDetails);
+        adapter.notifyDataSetChanged();
+
         // Save items
         saveItems();
 
