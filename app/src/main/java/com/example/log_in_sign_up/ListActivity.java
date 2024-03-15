@@ -35,6 +35,11 @@ public class ListActivity extends AppCompatActivity {
         // Load saved items
         loadItems();
 
+        // Initialize adapter with empty list
+        adapter = new ArrayAdapter<>(this, R.layout.list_item_layout, new ArrayList<String>());
+
+        // Set adapter
+        listView.setAdapter(adapter);
 
         // Add new item
         String userName = getIntent().getStringExtra("userName");
@@ -93,7 +98,9 @@ public class ListActivity extends AppCompatActivity {
     private void loadItems() {
         SharedPreferences preferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         itemSet = preferences.getStringSet(ITEM_SET_KEY, new HashSet<String>());
+        itemSet.clear(); // Linisin ang itemSet
     }
+
 
     private void saveItems() {
         SharedPreferences preferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
