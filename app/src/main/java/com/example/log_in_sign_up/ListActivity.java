@@ -35,9 +35,6 @@ public class ListActivity extends AppCompatActivity {
         // Load saved items
         loadItems();
 
-        // Initialize adapter with empty list
-        adapter = new ArrayAdapter<>(this, R.layout.list_item_layout, new ArrayList<String>());
-
 
         // Add new item
         String userName = getIntent().getStringExtra("userName");
