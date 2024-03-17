@@ -8,6 +8,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.CalendarView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -47,6 +48,7 @@ public class Confirmation extends AppCompatActivity {
         String location = intent.getStringExtra("location");
         String userName = intent.getStringExtra("userName");
         selectedDate = intent.getStringExtra("selectedDate");
+        int hotelImageId1 = intent.getIntExtra("hotelImageId1", 0); // Retrieve hotelImageId1
 
         // Set the text for each TextView
         selectedDateTextView.setText("Selected Date: " + selectedDate);
@@ -55,6 +57,10 @@ public class Confirmation extends AppCompatActivity {
         locationTextView.setText(location);
         userNameTextView.setText(userName);
         roomNameTextView.setText(roomName);
+
+        // Set the hotel image based on hotelImageId1
+        ImageView hotelImageView = findViewById(R.id.hotelImageView);
+        hotelImageView.setImageResource(hotelImageId1);
 
 
         // I-set ang OnDateChangeListener sa CalendarView
@@ -75,7 +81,7 @@ public class Confirmation extends AppCompatActivity {
             public void onClick(View v) {
                 // Suriin kung kumpleto na ang mga detalye
                 if (selectedDate == null || selectedDate.isEmpty() || roomName == null || roomName.isEmpty()) {
-                    // Kung hindi kumpleto, ipakita ang alert dialog
+                    // Alert dialog for incomplete details
                     AlertDialog.Builder builder = new AlertDialog.Builder(Confirmation.this);
                     builder.setMessage("You need to complete the list.");
                     builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -87,25 +93,35 @@ public class Confirmation extends AppCompatActivity {
                     AlertDialog alertDialog = builder.create();
                     alertDialog.show();
                 } else {
-                    // Kung kumpleto, lumikha ng Intent papunta sa ListActivity
-                    Intent intent = new Intent(Confirmation.this, ListActivity.class);
+                    // Apply the animation
+                    Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shadow_animation);
+                    hotelImageView.startAnimation(animation);
 
-                    // Ilagay ang lahat ng mga data na kailangan mo sa Intent
-                    intent.putExtra("userName", userName);
-                    intent.putExtra("hotelName", hotelName);
-                    intent.putExtra("location", location);
-                    intent.putExtra("activityName", activityName);
-                    intent.putExtra("roomName", roomName);
-                    intent.putExtra("selectedDate", selectedDate);
-                    startActivity(intent);
+                    // Delay the navigation to ListActivity to allow time for animation
+                    new android.os.Handler().postDelayed(
+                            new Runnable() {
+                                public void run() {
+                                    // Create an Intent to navigate to ListActivity
+                                    Intent intent = new Intent(Confirmation.this, ListActivity.class);
+
+                                    // Add all necessary data to the Intent
+                                    intent.putExtra("userName", userName);
+                                    intent.putExtra("hotelName", hotelName);
+                                    intent.putExtra("location", location);
+                                    intent.putExtra("activityName", activityName);
+                                    intent.putExtra("roomName", roomName);
+                                    intent.putExtra("selectedDate", selectedDate);
+                                    intent.putExtra("hotelImageId1", hotelImageId1); // Include hotelImageId1
+
+                                    // Start ListActivity
+                                    startActivity(intent);
+                                }
+                            },
+                            500 // Set delay in milliseconds
+                    );
                 }
             }
         });
-
-
-
-
-
 
 
 

@@ -71,22 +71,24 @@ public class Detail1 extends AppCompatActivity {
             ImagePagerAdapter adapter = new ImagePagerAdapter(this, new int[]{hotelImageId1, hotelImageId2});
             viewPager2.setAdapter(adapter);
 
-           // Set onClickListener for the "Book Now" button
+
+            // Set onClickListener for the "Book Now" button
             bookNowButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    // Create an Intent to navigate to ConfirmActivity
+                    // Create an Intent to navigate to Confirmation
                     Intent intent = new Intent(Detail1.this, Confirmation.class);
 
-                    // Pass necessary data to ConfirmActivity
+                    // Pass necessary data to Confirmation
                     intent.putExtra("hotelName", hotelName);
-                    intent.putExtra("activityName", customText); // Custom text from extras
-                    intent.putExtra("location", customText2); // Custom text 2 from extras
+                    intent.putExtra("activityName", customText);
+                    intent.putExtra("location", customText2);
+                    intent.putExtra("hotelImageId1", hotelImageId1);
 
-                    // Pass the user's full name to Confirmation activity
+                    // Pass the user's full name to Confirmation
                     intent.putExtra("userName", fullName);
 
-                    // Start ConfirmActivity
+                    // Start Confirmation activity
                     startActivity(intent);
                 }
             });

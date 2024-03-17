@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".Confirmation">
 
+    <ImageView
+        android:id="@+id/hotelImageView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/viewPager2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
     <TextView
         android:id="@+id/selectedDateTextView"
         android:layout_width="176dp"
