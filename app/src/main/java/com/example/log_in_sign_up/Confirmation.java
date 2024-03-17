@@ -74,10 +74,10 @@ public class Confirmation extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Suriin kung kumpleto na ang mga detalye
-                if (selectedDate == null || selectedDate.isEmpty() || roomName.isEmpty()) {
+                if (selectedDate == null || selectedDate.isEmpty() || roomName == null || roomName.isEmpty()) {
                     // Kung hindi kumpleto, ipakita ang alert dialog
                     AlertDialog.Builder builder = new AlertDialog.Builder(Confirmation.this);
-                    builder.setMessage("You need to complete the List.");
+                    builder.setMessage("You need to complete the list.");
                     builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
@@ -97,12 +97,12 @@ public class Confirmation extends AppCompatActivity {
                     intent.putExtra("activityName", activityName);
                     intent.putExtra("roomName", roomName);
                     intent.putExtra("selectedDate", selectedDate);
-
-                    // Simulan ang ListActivity gamit ang Intent na may dala ng data
                     startActivity(intent);
                 }
             }
         });
+
+
 
 
 

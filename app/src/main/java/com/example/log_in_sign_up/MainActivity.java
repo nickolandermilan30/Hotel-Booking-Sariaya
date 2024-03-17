@@ -46,6 +46,18 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        ImageButton listButton = findViewById(R.id.b2);
+
+        listButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Pumunta sa Room activity kapag pindutin ang button na "Room"
+                Intent intent = new Intent(MainActivity.this, ListActivity.class);
+                startActivity(intent);
+            }
+        });
+
         //Add multiple images to arraylist.
         arrayList.add("https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0b/0c/4a/0d/main-pool-area-fresh.jpg?w=1200&h=-1&s=1");
         arrayList.add("https://dynamic-media-cdn.tripadvisor.com/media/photo-o/07/dc/9f/1d/monte-vista-beach-resort.jpg?w=1200&h=-1&s=1");

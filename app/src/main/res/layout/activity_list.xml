@@ -6,7 +6,7 @@
     tools:context=".ListActivity">
 
     <ListView
-        android:id="@+id/listView"
+        android:id="@+id/customListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
