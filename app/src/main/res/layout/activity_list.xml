@@ -17,6 +17,17 @@
         app:layout_constraintStart_toStartOf="@+id/viewPager2"
         app:layout_constraintTop_toTopOf="@+id/viewPager2" />
 
+    <ImageButton
+        android:id="@+id/play"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/button19"
+        android:elevation="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/viewPager2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/title"
+        app:layout_constraintTop_toTopOf="@+id/viewPager2" />
+
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager2"
