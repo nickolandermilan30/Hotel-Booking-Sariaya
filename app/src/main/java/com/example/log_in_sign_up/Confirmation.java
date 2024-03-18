@@ -105,13 +105,10 @@ public class Confirmation extends AppCompatActivity {
                                     Intent intent = new Intent(Confirmation.this, ListActivity.class);
 
                                     // Add all necessary data to the Intent
-                                    intent.putExtra("userName", userName);
                                     intent.putExtra("hotelName", hotelName);
                                     intent.putExtra("location", location);
-                                    intent.putExtra("activityName", activityName);
-                                    intent.putExtra("roomName", roomName);
                                     intent.putExtra("selectedDate", selectedDate);
-                                    intent.putExtra("hotelImageId1", hotelImageId1); // Include hotelImageId1
+                                    intent.putExtra("hotelImageId1", hotelImageId1); 
 
                                     // Start ListActivity
                                     startActivity(intent);
