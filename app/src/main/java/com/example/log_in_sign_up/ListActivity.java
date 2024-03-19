@@ -24,6 +24,7 @@ public class ListActivity extends AppCompatActivity {
 
     private CountDownTimer countDownTimer;
     private SharedPreferences sharedPreferences;
+    private String setTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,8 @@ public class ListActivity extends AppCompatActivity {
 
         // Display saved data if available
         displaySavedData();
+
+
 
         ImageButton addTimeButton = findViewById(R.id.addtime);
         addTimeButton.setOnClickListener(new View.OnClickListener() {
@@ -156,16 +159,19 @@ public class ListActivity extends AppCompatActivity {
         String location = sharedPreferences.getString("location", "");
         String selectedDate = sharedPreferences.getString("selectedDate", "");
         String hotelImage = sharedPreferences.getString("hotelImage", ""); // Retrieve hotel image name
+        setTime = sharedPreferences.getString("time", ""); // Retrieve set time
 
         // Display saved data in TextViews and ImageView
         TextView hotelNameTextView = findViewById(R.id.hotelNameTextView);
         TextView locationTextView = findViewById(R.id.locationTextView);
         TextView selectedDateTextView = findViewById(R.id.selectedDateTextView);
+        TextView timeTextView = findViewById(R.id.time); // TextView for displaying time
         ImageView hotelImageView = findViewById(R.id.hotelImageView);
 
         hotelNameTextView.setText(hotelName);
         locationTextView.setText(location);
         selectedDateTextView.setText(selectedDate);
+        timeTextView.setText(setTime);
 
         // Set the hotel image based on hotel image name
         switch (hotelImage) {
@@ -184,9 +190,10 @@ public class ListActivity extends AppCompatActivity {
             case "h5":
                 hotelImageView.setImageResource(R.drawable.h5);
                 break;
-
         }
     }
+
+
     @Override
     protected void onPause() {
         super.onPause();
@@ -194,6 +201,7 @@ public class ListActivity extends AppCompatActivity {
         TextView hotelNameTextView = findViewById(R.id.hotelNameTextView);
         TextView locationTextView = findViewById(R.id.locationTextView);
         TextView selectedDateTextView = findViewById(R.id.selectedDateTextView);
+        TextView timeTextView = findViewById(R.id.time); // TextView for displaying time
         ImageView hotelImageView = findViewById(R.id.hotelImageView);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("hotelName", hotelNameTextView.getText().toString());
@@ -203,6 +211,9 @@ public class ListActivity extends AppCompatActivity {
         // Get the hotel image name from the resource id
         String hotelImageName = getHotelImageName(hotelImageView.getDrawable().getConstantState());
         editor.putString("hotelImage", hotelImageName);
+
+        // Save the set time
+        editor.putString("time", timeTextView.getText().toString());
         editor.apply();
     }
 
@@ -222,7 +233,9 @@ public class ListActivity extends AppCompatActivity {
             // Return default image name if none of the above matches
             return "default_image";
         }
+
     }
+
 
 
     private void showTimePickerDialog() {
