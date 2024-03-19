@@ -5,9 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
@@ -22,7 +20,6 @@ import java.util.Locale;
 
 public class ListActivity extends AppCompatActivity {
 
-    private CountDownTimer countDownTimer;
     private SharedPreferences sharedPreferences;
     private String setTime;
 
@@ -36,8 +33,6 @@ public class ListActivity extends AppCompatActivity {
 
         // Display saved data if available
         displaySavedData();
-
-
 
         ImageButton addTimeButton = findViewById(R.id.addtime);
         addTimeButton.setOnClickListener(new View.OnClickListener() {
@@ -75,8 +70,6 @@ public class ListActivity extends AppCompatActivity {
                 // Dito mo ilalagay ang logic para tanggalin ang oras na sinet
                 TextView timeTextView = findViewById(R.id.time);
                 timeTextView.setText("Time: ");
-                // I-cancel ang nauna pang countdown timer kung mayroon man
-                cancelCountdownTimer();
             }
         });
 
@@ -102,18 +95,14 @@ public class ListActivity extends AppCompatActivity {
 
                 // Kumunwari na may oras na itinakda
                 if (!timeString.equals("Time: ")) {
-                    // Gumawa ng CountDownTimer
-                    long totalMilliseconds = ((hour % 12) * 3600 + minute * 60) * 1000; // Convert oras at minuto sa milliseconds
-                    startCountdownTimer(totalMilliseconds);
-                    // Itago ang playButton pagkatapos mong pindutin ito
-                    playButton.setVisibility(View.GONE);
+                    Toast.makeText(ListActivity.this, "Starting countdown for " + timeString, Toast.LENGTH_SHORT).show();
+                    // Dito mo idadagdag ang logic para mag-start ng countdown timer
                 } else {
                     // Kung walang itinakdang oras, mag-anunsyo na walang itinakdang oras
                     Toast.makeText(ListActivity.this, "Walang itinakdang oras!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
 
         // Retrieve data from Intent
         Bundle extras = getIntent().getExtras();
@@ -233,10 +222,7 @@ public class ListActivity extends AppCompatActivity {
             // Return default image name if none of the above matches
             return "default_image";
         }
-
     }
-
-
 
     private void showTimePickerDialog() {
         // Default values ng oras
@@ -302,79 +288,8 @@ public class ListActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
-    // Simulan ang countdown timer
-    private void startCountdownTimer(long milliseconds) {
-        // I-cancel ang nauna pang countdown timer kung mayroon man
-        cancelCountdownTimer();
-
-        countDownTimer = new CountDownTimer(milliseconds, 1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-                // Update ang UI (kung kinakailangan) sa bawat tick ng timer
-                // Halimbawa: ipakita ang natitirang oras sa isang TextView
-                long secondsUntilFinished = millisUntilFinished / 1000;
-                long minutes = secondsUntilFinished / 60;
-                long seconds = secondsUntilFinished % 60;
-
-                // Ipakita ang natitirang oras sa isang TextView
-                TextView countdownTextView = findViewById(R.id.time);
-                countdownTextView.setText(String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds));
-            }
-            // I-update ang onFinish method sa CountDownTimer
-            @Override
-            public void onFinish() {
-                // Ipakita ang custom alert dialog kapag natapos na ang timer
-                showCustomAlertDialog();
-            }
-
-            // Lumikha ng method para ipakita ang custom alert dialog
-            private void showCustomAlertDialog() {
-                // Gumawa ng AlertDialog.Builder
-                AlertDialog.Builder builder = new AlertDialog.Builder(ListActivity.this);
-                View dialogView = getLayoutInflater().inflate(R.layout.custom_dialog_layout, null);
-
-                // Initialize ng mga views sa custom dialog layout
-                TextView dialogTitle = dialogView.findViewById(R.id.dialog_title);
-                TextView dialogMessage = dialogView.findViewById(R.id.dialog_message);
-                Button okButton = dialogView.findViewById(R.id.ok_button);
-
-                // Set ng mga teksto sa custom dialog
-                dialogTitle.setText("Timer Alert");
-                dialogMessage.setText("Your time is up!");
-
-                // I-set ang custom layout sa AlertDialog
-                builder.setView(dialogView);
-
-                // I-set ang positive button sa AlertDialog
-                builder.setPositiveButton(null, null);
-
-                // Ipakita ang AlertDialog
-                AlertDialog alertDialog = builder.create();
-                alertDialog.show();
-
-                // I-set ang onClickListener para sa OK button
-                okButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        alertDialog.dismiss();
-                    }
-                });
-            }
-
-
-        }.start();
-    }
-
-    private void cancelCountdownTimer() {
-        if (countDownTimer != null) {
-            countDownTimer.cancel();
-        }
-    }
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        // Siguraduhing i-cancel ang countdown timer sa pag-destroy ng activity
-        cancelCountdownTimer();
     }
 }
