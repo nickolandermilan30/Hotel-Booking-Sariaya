@@ -1,6 +1,9 @@
 package com.example.log_in_sign_up;
 
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -20,11 +23,18 @@ import java.util.Locale;
 public class ListActivity extends AppCompatActivity {
 
     private CountDownTimer countDownTimer;
+    private SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
+
+        // Initialize SharedPreferences
+        sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+
+        // Display saved data if available
+        displaySavedData();
 
         ImageButton addTimeButton = findViewById(R.id.addtime);
         addTimeButton.setOnClickListener(new View.OnClickListener() {
@@ -32,6 +42,26 @@ public class ListActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Magpakita ng AlertDialog at TimePickerDialog
                 showTimePickerDialog();
+            }
+        });
+        ImageButton homeButton = findViewById(R.id.b1);
+        ImageButton roomButton = findViewById(R.id.b3);
+
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Pumunta sa Room activity kapag pindutin ang button na "Room"
+                Intent intent = new Intent(ListActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        roomButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Pumunta sa Room activity kapag pindutin ang button na "Room"
+                Intent intent = new Intent(ListActivity.this, RoomActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -72,12 +102,15 @@ public class ListActivity extends AppCompatActivity {
                     // Gumawa ng CountDownTimer
                     long totalMilliseconds = ((hour % 12) * 3600 + minute * 60) * 1000; // Convert oras at minuto sa milliseconds
                     startCountdownTimer(totalMilliseconds);
+                    // Itago ang playButton pagkatapos mong pindutin ito
+                    playButton.setVisibility(View.GONE);
                 } else {
                     // Kung walang itinakdang oras, mag-anunsyo na walang itinakdang oras
                     Toast.makeText(ListActivity.this, "Walang itinakdang oras!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+
 
         // Retrieve data from Intent
         Bundle extras = getIntent().getExtras();
@@ -92,9 +125,9 @@ public class ListActivity extends AppCompatActivity {
             TextView selectedDateTextView = findViewById(R.id.selectedDateTextView);
             ImageView hotelImageView = findViewById(R.id.hotelImageView);
 
-            hotelNameTextView.setText("Hotel Name: " + hotelName);
-            locationTextView.setText("Location: " + location);
-            selectedDateTextView.setText("Selected Date: " + selectedDate);
+            hotelNameTextView.setText(hotelName);
+            locationTextView.setText(location);
+            selectedDateTextView.setText(selectedDate);
 
             // Set the hotel image based on hotel name
             switch (hotelName) {
@@ -116,6 +149,81 @@ public class ListActivity extends AppCompatActivity {
             }
         }
     }
+
+    private void displaySavedData() {
+        // Retrieve saved data from SharedPreferences
+        String hotelName = sharedPreferences.getString("hotelName", "");
+        String location = sharedPreferences.getString("location", "");
+        String selectedDate = sharedPreferences.getString("selectedDate", "");
+        String hotelImage = sharedPreferences.getString("hotelImage", ""); // Retrieve hotel image name
+
+        // Display saved data in TextViews and ImageView
+        TextView hotelNameTextView = findViewById(R.id.hotelNameTextView);
+        TextView locationTextView = findViewById(R.id.locationTextView);
+        TextView selectedDateTextView = findViewById(R.id.selectedDateTextView);
+        ImageView hotelImageView = findViewById(R.id.hotelImageView);
+
+        hotelNameTextView.setText(hotelName);
+        locationTextView.setText(location);
+        selectedDateTextView.setText(selectedDate);
+
+        // Set the hotel image based on hotel image name
+        switch (hotelImage) {
+            case "h1":
+                hotelImageView.setImageResource(R.drawable.h1);
+                break;
+            case "h2":
+                hotelImageView.setImageResource(R.drawable.h2);
+                break;
+            case "h3":
+                hotelImageView.setImageResource(R.drawable.h3);
+                break;
+            case "h4":
+                hotelImageView.setImageResource(R.drawable.h4);
+                break;
+            case "h5":
+                hotelImageView.setImageResource(R.drawable.h5);
+                break;
+
+        }
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // Save data from TextViews and ImageView to SharedPreferences
+        TextView hotelNameTextView = findViewById(R.id.hotelNameTextView);
+        TextView locationTextView = findViewById(R.id.locationTextView);
+        TextView selectedDateTextView = findViewById(R.id.selectedDateTextView);
+        ImageView hotelImageView = findViewById(R.id.hotelImageView);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("hotelName", hotelNameTextView.getText().toString());
+        editor.putString("location", locationTextView.getText().toString());
+        editor.putString("selectedDate", selectedDateTextView.getText().toString());
+
+        // Get the hotel image name from the resource id
+        String hotelImageName = getHotelImageName(hotelImageView.getDrawable().getConstantState());
+        editor.putString("hotelImage", hotelImageName);
+        editor.apply();
+    }
+
+    // Helper method to get the hotel image name from the resource id
+    private String getHotelImageName(Drawable.ConstantState constantState) {
+        if (constantState.equals(getResources().getDrawable(R.drawable.h1).getConstantState())) {
+            return "h1";
+        } else if (constantState.equals(getResources().getDrawable(R.drawable.h2).getConstantState())) {
+            return "h2";
+        } else if (constantState.equals(getResources().getDrawable(R.drawable.h3).getConstantState())) {
+            return "h3";
+        } else if (constantState.equals(getResources().getDrawable(R.drawable.h4).getConstantState())) {
+            return "h4";
+        } else if (constantState.equals(getResources().getDrawable(R.drawable.h5).getConstantState())) {
+            return "h5";
+        } else {
+            // Return default image name if none of the above matches
+            return "default_image";
+        }
+    }
+
 
     private void showTimePickerDialog() {
         // Default values ng oras

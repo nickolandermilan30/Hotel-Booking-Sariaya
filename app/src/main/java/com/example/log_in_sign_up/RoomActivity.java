@@ -29,6 +29,27 @@ public class RoomActivity extends AppCompatActivity {
         String selectedDate = intent.getStringExtra("selectedDate");
         ImageButton backButton = findViewById(R.id.back);
 
+        ImageButton homeButton = findViewById(R.id.b1);
+        ImageButton roomButton = findViewById(R.id.b2);
+
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Pumunta sa Room activity kapag pindutin ang button na "Room"
+                Intent intent = new Intent(RoomActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        roomButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Pumunta sa Room activity kapag pindutin ang button na "Room"
+                Intent intent = new Intent(RoomActivity.this, ListActivity.class);
+                startActivity(intent);
+            }
+        });
+
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
